@@ -5,134 +5,155 @@
 <title>Kriti, Be My Valentine ❤️</title>
 
 <style>
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: linear-gradient(135deg, #ff758c, #ff7eb3);
-    font-family: 'Segoe UI', sans-serif;
-    color: white;
-    text-align: center;
-    overflow-x: hidden;
-  }
+body {
+margin: 0;
+min-height: 100vh;
+background: linear-gradient(135deg, #ff758c, #ff7eb3);
+font-family: 'Segoe UI', sans-serif;
+color: white;
+text-align: center;
+overflow-x: hidden;
+}
 
-  .container {
-    padding: 40px 20px;
-    animation: fadeIn 2s ease-in;
-  }
+.container {
+padding: 40px 20px;
+animation: fadeIn 2s ease-in;
+}
 
-  h1 { font-size: 42px; }
-  h2 { font-size: 28px; }
+h1 { font-size: 42px; }
+h2 { font-size: 28px; }
 
-  p {
-    font-size: 20px;
-    max-width: 700px;
-    margin: auto;
-    line-height: 1.6;
-  }
+p {
+font-size: 20px;
+max-width: 700px;
+margin: auto;
+line-height: 1.6;
+}
 
-  button {
-    font-size: 22px;
-    padding: 14px 30px;
-    margin: 25px;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: transform 0.3s;
-  }
+button {
+font-size: 22px;
+padding: 14px 30px;
+margin: 25px;
+border: none;
+border-radius: 50px;
+cursor: pointer;
+transition: transform 0.3s;
+}
 
-  button:hover { transform: scale(1.1); }
+button:hover { transform: scale(1.1); }
 
-  #yes { background: #ff2e63; color: white; }
-  #no { background: #444; color: white; position: absolute; }
+#yes { background: #ff2e63; color: white; }
+#no { background: #444; color: white; position: absolute; }
 
-  img {
-    width: 220px;
-    border-radius: 20px;
-    margin: 10px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  }
+#popupBtn {
+font-size: 20px;
+padding: 12px 24px;
+border-radius: 50px;
+border: none;
+background: #ff2e63;
+color: white;
+cursor: pointer;
+transition: transform 0.3s;
+animation: pulse 1.5s infinite;
+}
 
-  iframe {
-    width: 90%;
-    max-width: 560px;
-    height: 315px;
-    border-radius: 20px;
-    margin-top: 20px;
-    border: none;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
-  }
+#popupBtn:hover {
+transform: scale(1.2);
+}
 
-  #countdown {
-    font-size: 24px;
-    margin-top: 20px;
-  }
+@keyframes pulse {
+0%, 100% { transform: scale(1); }
+50% { transform: scale(1.1); }
+}
 
-  .heart {
-    position: absolute;
-    font-size: 24px;
-    animation: float 6s linear infinite;
-  }
+img {
+width: 220px;
+border-radius: 20px;
+margin: 10px;
+box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
 
-  @keyframes float {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-100vh); opacity: 0; }
-  }
+iframe {
+width: 90%;
+max-width: 560px;
+height: 315px;
+border-radius: 20px;
+margin-top: 20px;
+border: none;
+box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+}
 
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+#countdown {
+font-size: 24px;
+margin-top: 20px;
+}
 
-  .popup {
-    position: fixed;
-    inset: 0;
-    background: rgba(0,0,0,0.85);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-  }
+.heart {
+position: absolute;
+font-size: 24px;
+animation: float 6s linear infinite;
+}
 
-  .popup-content {
-    background: white;
-    color: #ff2e63;
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 420px;
-    font-size: 22px;
-    animation: fadeIn 1s;
-  }
+@keyframes float {
+0% { transform: translateY(0); opacity: 1; }
+100% { transform: translateY(-100vh); opacity: 0; }
+}
+
+@keyframes fadeIn {
+from { opacity: 0; transform: translateY(20px); }
+to { opacity: 1; transform: translateY(0); }
+}
+
+.popup {
+position: fixed;
+inset: 0;
+background: rgba(0,0,0,0.85);
+display: none;
+align-items: center;
+justify-content: center;
+z-index: 10;
+}
+
+.popup-content {
+background: white;
+color: #ff2e63;
+padding: 30px;
+border-radius: 20px;
+max-width: 420px;
+font-size: 22px;
+animation: fadeIn 1s;
+}
 </style>
 </head>
 
 <body>
 
 <div class="container">
-  <h1>Hey Kriti ❤️</h1>
+<h1>Hey Kriti ❤️</h1>
 
-  <p>
-    This is Udit typing… but also smiling like an idiot while doing it 😄  
-    You somehow make my days brighter, my jokes funnier, and my heart softer.  
-    So I made this little website just to ask you something important…
-  </p>
+<p>
+This is Udit typing… but also smiling like an idiot while doing it 😄
+You somehow make my days brighter, my jokes funnier, and my heart softer.
+So I made this little website just to ask you something important…
+</p>
 
-  <h2>Kriti, will you be my Valentine? 💕</h2>
+<h2>Kriti, will you be my Valentine? 💕</h2>
 
-  <button id="yes" onclick="yesClicked()">YES 💖</button>
-  <button id="no" onmouseover="moveNo()">NO 😝</button>
+<button id="yes" onclick="yesClicked()">YES 💖</button>
+<button id="no" onmouseover="moveNo()">NO 😝</button>
 
-  <div id="countdown"></div>
+<div id="countdown"></div>
 
-  <h2>Us being cute 😍</h2>
-  <!-- Replace with your photos -->
+<h2>Us being cute 😍</h2>
+<!-- Replace with your photos -->
 <img src="pic1.jpg" alt="Kriti and Udit 💕">
 <img src="pic2.jpg" alt="Us being cute 😍">
 <img src="pic3.jpg" alt="Forever vibes ❤️">
 
-  <h2>Because love should be funny too 😂❤️</h2>
-  <p>(Press play, trust me 😏)</p>
+<h2>Because love should be funny too 😂❤️</h2>
+<p>(Press play, trust me 😏)</p>
 
-  <!-- Funny + Cute Love Video -->
+<!-- Funny + Cute Love Video -->
 <iframe width="560" height="315"
 src="https://www.youtube.com/embed/pOQW2fDUS_A"
 frameborder="0"
@@ -143,69 +164,70 @@ allowfullscreen>
 
 <!-- Popup -->
 <div class="popup" id="popup">
-  <div class="popup-content">
-    🎉 YAY KRITI!! 🎉<br><br>
-    You just made Udit the luckiest guy ever ❤️  
-    Get ready for unlimited smiles, bad jokes, and lots of love 😄💘
-  </div>
+<div class="popup-content">
+🎉 YAY KRITI!! 🎉<br><br>
+You just made Udit the luckiest guy ever ❤️<br>
+Get ready for unlimited smiles, bad jokes, and lots of love 😄💘<br><br>
+<button id="popupBtn">Open Your Surprise 💖</button>
+</div>
 </div>
 
 <!-- Music -->
 <audio autoplay loop>
-  <source src="https://youtu.be/pOQW2fDUS_A?si=tzhsXk4isXMo-ijC">
+<source src="https://youtu.be/pOQW2fDUS_A?si=tzhsXk4isXMo-ijC">
 </audio>
 
 <script>
-  function yesClicked() {
-    document.getElementById("popup").style.display = "flex";
-    confetti();
-  }
+function yesClicked() {
+// Show popup
+const popup = document.getElementById("popup");
+popup.style.display = "flex";
 
-  function moveNo() {
-    const no = document.getElementById("no");
-    no.style.left = Math.random() * (window.innerWidth - 100) + "px";
-    no.style.top = Math.random() * (window.innerHeight - 50) + "px";
-  }
+// Confetti hearts
+for (let i = 0; i < 40; i++) {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "💖";
+heart.style.left = Math.random() * window.innerWidth + "px";
+heart.style.bottom = "50%";
+document.body.appendChild(heart);
+setTimeout(() => heart.remove(), 4000);
+}
 
-  // Countdown
-  const valentine = new Date("February 14, 2026").getTime();
-  setInterval(() => {
-    const now = new Date().getTime();
-    const diff = valentine - now;
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    document.getElementById("countdown").innerHTML =
-      "⏳ Valentine’s Day in " + days + " days";
-  }, 1000);
+// Add click event for popup button
+const popupBtn = document.getElementById("popupBtn");
+popupBtn.onclick = () => {
+window.open("https://uditaror.github.io/valentine2/", "_blank");
+};
+}
 
-  // Floating hearts
-  setInterval(() => {
-    const heart = document.createElement("div");
-    heart.className = "heart";
-    heart.innerHTML = "💖";
-    heart.style.left = Math.random() * window.innerWidth + "px";
-    heart.style.bottom = "0px";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 6000);
-  }, 300);
+function moveNo() {
+const no = document.getElementById("no");
+no.style.left = Math.random() * (window.innerWidth - 100) + "px";
+no.style.top = Math.random() * (window.innerHeight - 50) + "px";
+}
 
-  function confetti() {
-    for (let i = 0; i < 40; i++) {
-      const heart = document.createElement("div");
-      heart.className = "heart";
-      heart.innerHTML = "🎉";
-      heart.style.left = Math.random() * window.innerWidth + "px";
-      heart.style.bottom = "50%";
-      document.body.appendChild(heart);
-      setTimeout(() => heart.remove(), 4000);
-    }
-  }
+// Countdown
+const valentine = new Date("February 14, 2026").getTime();
+setInterval(() => {
+const now = new Date().getTime();
+const diff = valentine - now;
+const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+document.getElementById("countdown").innerHTML =
+"⏳ Valentine’s Day in " + days + " days";
+}, 1000);
+
+// Floating hearts
+setInterval(() => {
+const heart = document.createElement("div");
+heart.className = "heart";
+heart.innerHTML = "💖";
+heart.style.left = Math.random() * window.innerWidth + "px";
+heart.style.bottom = "0px";
+document.body.appendChild(heart);
+setTimeout(() => heart.remove(), 6000);
+}, 300);
 </script>
 
 </body>
 </html>
-
-
-
-
-
-
