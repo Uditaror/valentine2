@@ -55,8 +55,8 @@ button:hover {
 
 .firework {
     position: fixed;
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
     background: gold;
     border-radius: 50%;
     animation: explode 1s linear forwards;
@@ -64,7 +64,7 @@ button:hover {
 
 @keyframes explode {
     from { transform: scale(1); opacity: 1; }
-    to { transform: scale(5); opacity: 0; }
+    to { transform: scale(6); opacity: 0; }
 }
 
 img {
@@ -89,17 +89,22 @@ iframe {
     <button onclick="startSurprise()">Are you ready for a surprise? 😍</button>
 </div>
 
-<!-- VIDEO -->
+<!-- VIDEO SECTION -->
 <div id="videoSection" class="section">
     <h2>Just for you 💕</h2>
 
-   <iframe width="320" height="180"
-src="https://www.youtube.com/embed/pOQW2fDUS_A"
-allowfullscreen>
-</iframe>
+    <iframe width="320" height="180"
+        src="https://www.youtube.com/embed/pOQW2fDUS_A?autoplay=1"
+        allow="autoplay"
+        allowfullscreen>
+    </iframe>
 
-    <p style="margin-top:20px;">🎀 Ready for Date Night? 🎀</p>
-    <button onclick="showYes()">YES ❤️</button>
+    <!-- CLICKABLE MESSAGE -->
+    <h2 onclick="runFireworks()" style="cursor:pointer; margin-top:25px;">
+        🎀 Ready for Date Night? 🎀
+    </h2>
+
+    <button onclick="showFinal()">YES ❤️</button>
 </div>
 
 <!-- FINAL -->
@@ -113,6 +118,11 @@ allowfullscreen>
 <img src="pic3.jpg" alt="Forever vibes ❤️">
 </div>
 
+<iframe width="320" height="180"
+src="https://www.youtube.com/embed/pOQW2fDUS_A"
+allowfullscreen>
+</iframe>
+
 <script>
 function startSurprise() {
     document.getElementById("intro").classList.remove("active");
@@ -120,14 +130,13 @@ function startSurprise() {
     setInterval(createHeart, 300);
 }
 
-function showYes() {
+function showFinal() {
     document.getElementById("videoSection").classList.remove("active");
     document.getElementById("final").classList.add("active");
-    for (let i = 0; i < 30; i++) {
-        setTimeout(createFirework, i * 100);
-    }
+    runFireworks();
 }
 
+/* ❤️ HEARTS */
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -136,6 +145,13 @@ function createHeart() {
     heart.style.animationDuration = (Math.random() * 2 + 3) + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 5000);
+}
+
+/* 🎆 FIREWORKS */
+function runFireworks() {
+    for (let i = 0; i < 25; i++) {
+        setTimeout(createFirework, i * 120);
+    }
 }
 
 function createFirework() {
