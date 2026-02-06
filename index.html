@@ -6,17 +6,21 @@
 
 <style>
 body {
-  background: linear-gradient(#ff9a9e, #fad0c4);
+  margin: 0;
+  background: linear-gradient(#ff5fa2, #ffc3d9);
   text-align: center;
   font-family: 'Arial', sans-serif;
-  color: #fff;
-  padding: 20px;
+  color: white;
   overflow-x: hidden;
 }
 
-h1 { font-size: 42px; }
+h1 { font-size: 44px; }
 h2 { font-size: 30px; }
-p { font-size: 20px; max-width: 700px; margin: auto; }
+p {
+  font-size: 20px;
+  max-width: 700px;
+  margin: auto;
+}
 
 button {
   font-size: 22px;
@@ -27,12 +31,15 @@ button {
   cursor: pointer;
 }
 
-#yes { background: #ff4d6d; color: white; }
-#no { background: #555; color: white; position: absolute; }
+#yes { background: #ff1e56; color: white; }
+#no {
+  background: #444;
+  color: white;
+  position: absolute;
+}
 
 #surprise {
-  background: #ff85a2;
-  color: white;
+  background: #ff85c2;
   animation: pulse 1.5s infinite;
 }
 
@@ -42,8 +49,49 @@ button {
   100% { transform: scale(1); }
 }
 
+/* Floating hearts */
+.heart {
+  position: fixed;
+  color: pink;
+  font-size: 20px;
+  animation: float 5s linear infinite;
+}
+
+@keyframes float {
+  0% { bottom: -10px; opacity: 1; }
+  100% { bottom: 100vh; opacity: 0; }
+}
+
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 8px;
+  height: 8px;
+  animation: fall 3s linear infinite;
+}
+
+@keyframes fall {
+  0% { transform: translateY(-10px); }
+  100% { transform: translateY(100vh); }
+}
+
+/* Fireworks */
+.firework {
+  position: fixed;
+  width: 6px;
+  height: 6px;
+  background: yellow;
+  border-radius: 50%;
+  animation: explode 1s ease-out forwards;
+}
+
+@keyframes explode {
+  from { transform: scale(1); opacity: 1; }
+  to { transform: scale(5); opacity: 0; }
+}
+
 img {
-  width: 250px;
+  width: 240px;
   border-radius: 20px;
   margin: 15px;
 }
@@ -53,33 +101,10 @@ img {
   margin-top: 20px;
 }
 
-/* Confetti */
-.confetti {
-  position: fixed;
-  width: 10px;
-  height: 10px;
-  background: red;
-  animation: fall 3s linear infinite;
-}
-
-@keyframes fall {
-  0% { transform: translateY(-10px); }
-  100% { transform: translateY(100vh); }
-}
-
-/* Video Popup */
-#videoPopup {
-  display: none;
-  position: fixed;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-  background: rgba(0,0,0,0.8);
-}
-
-#videoPopup video {
-  width: 80%;
-  margin-top: 10%;
+/* YouTube section */
+iframe {
   border-radius: 20px;
+  margin-top: 20px;
 }
 </style>
 </head>
@@ -89,9 +114,9 @@ img {
 <h1>Hi Kriti ❤️</h1>
 
 <p>
-From laughs to late-night talks,  
-from silly moments to unforgettable memories…  
-You make my world brighter every single day 💕  
+You make my world brighter, my heart happier  
+and my smile wider every single day 💕  
+This little website is just for you…
 </p>
 
 <h2>Will you be my Valentine? 💖</h2>
@@ -104,70 +129,90 @@ You make my world brighter every single day 💕
 <button id="surprise" onclick="showSurprise()">Ready for Surprise 🎁</button>
 
 <h2 id="dateMessage" style="display:none;">
-💃🕺 Kriti & Udit are READY for DATE NIGHT ❤️✨
+💃🕺 Kriti & Udit are READY FOR DATE NIGHT ❤️✨
 </h2>
 
 <div id="countdown"></div>
 
-<h2>Our Moments 💑</h2>
+<h2>Our Memories 💑</h2>
 
-<!-- Replace with your real images -->
 <img src="pic1.jpg" alt="Kriti and Udit 💕">
 <img src="pic2.jpg" alt="Us being cute 😍">
 <img src="pic3.jpg" alt="Forever vibes ❤️">
 
-<!-- Background Music -->
+<h2>For You 💕</h2>
+
+<!-- Replace YouTube ID with your own -->
+<iframe width="320" height="180"
+src="https://www.youtube.com/embed/pOQW2fDUS_A"
+allowfullscreen>
+</iframe>
+
+<!-- Music -->
 <audio id="bgMusic" autoplay loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
 
-<!-- Surprise Music -->
 <audio id="loveMusic">
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
 </audio>
 
-<!-- Video Popup -->
-<div id="videoPopup" onclick="closeVideo()">
-  <video id="loveVideo" controls>
-    <!-- Replace with your funny/cute video -->
-    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
-  </video>
-</div>
-
 <script>
-function yesClicked() {
-  createConfetti();
-  alert("YAYYY 😍❤️ Happy Valentine’s Day Kriti! Love you 💕 – Udit");
-}
-
+// Funny NO button
 function moveNo() {
   const no = document.getElementById("no");
   no.style.left = Math.random() * 400 + "px";
   no.style.top = Math.random() * 400 + "px";
 }
 
+// YES clicked → fireworks + confetti
+function yesClicked() {
+  fireworks();
+  confetti();
+  alert("YAYYYY 😍❤️ Happy Valentine’s Day Kriti!\nLove, Udit 💕");
+}
+
+// Surprise button
 function showSurprise() {
   document.getElementById("dateMessage").style.display = "block";
   document.getElementById("bgMusic").pause();
   document.getElementById("loveMusic").play();
-  createConfetti();
-  document.getElementById("videoPopup").style.display = "block";
-  document.getElementById("loveVideo").play();
+  confetti();
 }
 
-function closeVideo() {
-  document.getElementById("videoPopup").style.display = "none";
-  document.getElementById("loveVideo").pause();
+// Floating hearts
+setInterval(() => {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = "❤️";
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = Math.random() * 20 + 15 + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 5000);
+}, 300);
+
+// Confetti
+function confetti() {
+  for (let i = 0; i < 60; i++) {
+    const c = document.createElement("div");
+    c.className = "confetti";
+    c.style.left = Math.random() * window.innerWidth + "px";
+    c.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(c);
+    setTimeout(() => c.remove(), 3000);
+  }
 }
 
-function createConfetti() {
-  for (let i = 0; i < 50; i++) {
-    const confetti = document.createElement("div");
-    confetti.className = "confetti";
-    confetti.style.left = Math.random() * window.innerWidth + "px";
-    confetti.style.background = `hsl(${Math.random()*360},100%,50%)`;
-    document.body.appendChild(confetti);
-    setTimeout(() => confetti.remove(), 3000);
+// Fireworks
+function fireworks() {
+  for (let i = 0; i < 30; i++) {
+    const f = document.createElement("div");
+    f.className = "firework";
+    f.style.left = Math.random() * window.innerWidth + "px";
+    f.style.top = Math.random() * window.innerHeight + "px";
+    f.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(f);
+    setTimeout(() => f.remove(), 1000);
   }
 }
 
@@ -184,4 +229,3 @@ setInterval(() => {
 
 </body>
 </html>
-
