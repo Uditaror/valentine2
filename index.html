@@ -2,231 +2,184 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Kriti, Be My Valentine ❤️</title>
+<title>Kriti ❤️ Udit</title>
 
 <style>
 body {
-margin: 0;
-min-height: 100vh;
-background: linear-gradient(135deg, #ff758c, #ff7eb3);
-font-family: 'Segoe UI', sans-serif;
-color: white;
-text-align: center;
-overflow-x: hidden;
-}
-
-.container {
-padding: 40px 20px;
-animation: fadeIn 2s ease-in;
+  background: linear-gradient(#ff9a9e, #fad0c4);
+  text-align: center;
+  font-family: 'Arial', sans-serif;
+  color: #fff;
+  padding: 20px;
+  overflow-x: hidden;
 }
 
 h1 { font-size: 42px; }
-h2 { font-size: 28px; }
-
-p {
-font-size: 20px;
-max-width: 700px;
-margin: auto;
-line-height: 1.6;
-}
+h2 { font-size: 30px; }
+p { font-size: 20px; max-width: 700px; margin: auto; }
 
 button {
-font-size: 22px;
-padding: 14px 30px;
-margin: 25px;
-border: none;
-border-radius: 50px;
-cursor: pointer;
-transition: transform 0.3s;
+  font-size: 22px;
+  padding: 12px 30px;
+  margin: 15px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
 }
 
-button:hover { transform: scale(1.1); }
+#yes { background: #ff4d6d; color: white; }
+#no { background: #555; color: white; position: absolute; }
 
-#yes { background: #ff2e63; color: white; }
-#no { background: #444; color: white; position: absolute; }
-
-#popupBtn {
-font-size: 20px;
-padding: 12px 24px;
-border-radius: 50px;
-border: none;
-background: #ff2e63;
-color: white;
-cursor: pointer;
-transition: transform 0.3s;
-animation: pulse 1.5s infinite;
-}
-
-#popupBtn:hover {
-transform: scale(1.2);
+#surprise {
+  background: #ff85a2;
+  color: white;
+  animation: pulse 1.5s infinite;
 }
 
 @keyframes pulse {
-0%, 100% { transform: scale(1); }
-50% { transform: scale(1.1); }
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
 }
 
 img {
-width: 220px;
-border-radius: 20px;
-margin: 10px;
-box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-}
-
-iframe {
-width: 90%;
-max-width: 560px;
-height: 315px;
-border-radius: 20px;
-margin-top: 20px;
-border: none;
-box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+  width: 250px;
+  border-radius: 20px;
+  margin: 15px;
 }
 
 #countdown {
-font-size: 24px;
-margin-top: 20px;
+  font-size: 26px;
+  margin-top: 20px;
 }
 
-.heart {
-position: absolute;
-font-size: 24px;
-animation: float 6s linear infinite;
+/* Confetti */
+.confetti {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  background: red;
+  animation: fall 3s linear infinite;
 }
 
-@keyframes float {
-0% { transform: translateY(0); opacity: 1; }
-100% { transform: translateY(-100vh); opacity: 0; }
+@keyframes fall {
+  0% { transform: translateY(-10px); }
+  100% { transform: translateY(100vh); }
 }
 
-@keyframes fadeIn {
-from { opacity: 0; transform: translateY(20px); }
-to { opacity: 1; transform: translateY(0); }
+/* Video Popup */
+#videoPopup {
+  display: none;
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0,0,0,0.8);
 }
 
-.popup {
-position: fixed;
-inset: 0;
-background: rgba(0,0,0,0.85);
-display: none;
-align-items: center;
-justify-content: center;
-z-index: 10;
-}
-
-.popup-content {
-background: white;
-color: #ff2e63;
-padding: 30px;
-border-radius: 20px;
-max-width: 420px;
-font-size: 22px;
-animation: fadeIn 1s;
+#videoPopup video {
+  width: 80%;
+  margin-top: 10%;
+  border-radius: 20px;
 }
 </style>
 </head>
 
 <body>
 
-<div class="container">
-<h1>Hey Kriti ❤️</h1>
+<h1>Hi Kriti ❤️</h1>
 
 <p>
-This is Udit typing… but also smiling like an idiot while doing it 😄
-You somehow make my days brighter, my jokes funnier, and my heart softer.
-So I made this little website just to ask you something important…
+From laughs to late-night talks,  
+from silly moments to unforgettable memories…  
+You make my world brighter every single day 💕  
 </p>
 
-<h2>Kriti, will you be my Valentine? 💕</h2>
+<h2>Will you be my Valentine? 💖</h2>
 
-<button id="yes" onclick="yesClicked()">YES 💖</button>
+<button id="yes" onclick="yesClicked()">YES 💘</button>
 <button id="no" onmouseover="moveNo()">NO 😝</button>
+
+<br><br>
+
+<button id="surprise" onclick="showSurprise()">Ready for Surprise 🎁</button>
+
+<h2 id="dateMessage" style="display:none;">
+💃🕺 Kriti & Udit are READY for DATE NIGHT ❤️✨
+</h2>
 
 <div id="countdown"></div>
 
-<h2>Us being cute 😍</h2>
-<!-- Replace with your photos -->
-<img src="pic1.jpg" alt="Kriti and Udit 💕">
-<img src="pic2.jpg" alt="Us being cute 😍">
-<img src="pic3.jpg" alt="Forever vibes ❤️">
+<h2>Our Moments 💑</h2>
 
-<h2>Because love should be funny too 😂❤️</h2>
-<p>(Press play, trust me 😏)</p>
+<!-- Replace with your real images -->
+<img src="DSC08257.jpg">
+<img src="DSC08406.jpg">
+<img src="DSC08448.jpg">
 
-<!-- Funny + Cute Love Video -->
-<iframe width="560" height="315"
-src="https://www.youtube.com/embed/pOQW2fDUS_A"
-frameborder="0"
-allowfullscreen>
-</iframe>
-
-</div>
-
-<!-- Popup -->
-<div class="popup" id="popup">
-<div class="popup-content">
-🎉 YAY KRITI!! 🎉<br><br>
-You just made Udit the luckiest guy ever ❤️<br>
-Get ready for unlimited smiles, bad jokes, and lots of love 😄💘<br><br>
-<button id="popupBtn">Open Your Surprise 💖</button>
-</div>
-</div>
-
-<!-- Music -->
-<audio autoplay loop>
-<source src="https://youtu.be/pOQW2fDUS_A?si=tzhsXk4isXMo-ijC">
+<!-- Background Music -->
+<audio id="bgMusic" autoplay loop>
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
 </audio>
+
+<!-- Surprise Music -->
+<audio id="loveMusic">
+  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3">
+</audio>
+
+<!-- Video Popup -->
+<div id="videoPopup" onclick="closeVideo()">
+  <video id="loveVideo" controls>
+    <!-- Replace with your funny/cute video -->
+    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+  </video>
+</div>
 
 <script>
 function yesClicked() {
-// Show popup
-const popup = document.getElementById("popup");
-popup.style.display = "flex";
-
-// Confetti hearts
-for (let i = 0; i < 40; i++) {
-const heart = document.createElement("div");
-heart.className = "heart";
-heart.innerHTML = "💖";
-heart.style.left = Math.random() * window.innerWidth + "px";
-heart.style.bottom = "50%";
-document.body.appendChild(heart);
-setTimeout(() => heart.remove(), 4000);
-}
-
-// Add click event for popup button
-const popupBtn = document.getElementById("popupBtn");
-popupBtn.onclick = () => {
-window.open("https://uditaror.github.io/valentine2/", "_blank");
-};
+  createConfetti();
+  alert("YAYYY 😍❤️ Happy Valentine’s Day Kriti! Love you 💕 – Udit");
 }
 
 function moveNo() {
-const no = document.getElementById("no");
-no.style.left = Math.random() * (window.innerWidth - 100) + "px";
-no.style.top = Math.random() * (window.innerHeight - 50) + "px";
+  const no = document.getElementById("no");
+  no.style.left = Math.random() * 400 + "px";
+  no.style.top = Math.random() * 400 + "px";
+}
+
+function showSurprise() {
+  document.getElementById("dateMessage").style.display = "block";
+  document.getElementById("bgMusic").pause();
+  document.getElementById("loveMusic").play();
+  createConfetti();
+  document.getElementById("videoPopup").style.display = "block";
+  document.getElementById("loveVideo").play();
+}
+
+function closeVideo() {
+  document.getElementById("videoPopup").style.display = "none";
+  document.getElementById("loveVideo").pause();
+}
+
+function createConfetti() {
+  for (let i = 0; i < 50; i++) {
+    const confetti = document.createElement("div");
+    confetti.className = "confetti";
+    confetti.style.left = Math.random() * window.innerWidth + "px";
+    confetti.style.background = `hsl(${Math.random()*360},100%,50%)`;
+    document.body.appendChild(confetti);
+    setTimeout(() => confetti.remove(), 3000);
+  }
 }
 
 // Countdown
 const valentine = new Date("February 14, 2026").getTime();
 setInterval(() => {
-const now = new Date().getTime();
-const diff = valentine - now;
-const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-document.getElementById("countdown").innerHTML =
-"⏳ Valentine’s Day in " + days + " days";
+  const now = new Date().getTime();
+  const diff = valentine - now;
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  document.getElementById("countdown").innerHTML =
+    "⏳ Valentine’s Day in " + days + " days";
 }, 1000);
-
-// Floating hearts
-setInterval(() => {
-const heart = document.createElement("div");
-heart.className = "heart";
-heart.innerHTML = "💖";
-heart.style.left = Math.random() * window.innerWidth + "px";
-heart.style.bottom = "0px";
-document.body.appendChild(heart);
-setTimeout(() => heart.remove(), 6000);
-}, 300);
 </script>
 
 </body>
