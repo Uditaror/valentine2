@@ -2,10 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-
-<!-- ✅ MOBILE RESPONSIVE TAG -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Kriti ❤️ Udit</title>
 
 <style>
@@ -17,7 +14,6 @@ body {
     overflow-x: hidden;
 }
 
-/* TEXT */
 h1, h2, p {
     color: #fff;
     padding: 0 10px;
@@ -29,16 +25,25 @@ button {
     font-size: 18px;
     border: none;
     border-radius: 30px;
-    background: #ff4d88;
-    color: white;
     cursor: pointer;
-    margin: 15px;
+    margin: 12px;
     width: 80%;
-    max-width: 300px;
+    max-width: 280px;
 }
 
-button:hover {
+#yesBtn {
+    background: #ff4d88;
+    color: white;
+}
+
+#yesBtn:hover {
     background: #ff1a66;
+}
+
+#noBtn {
+    background: #555;
+    color: white;
+    position: absolute;
 }
 
 /* SECTIONS */
@@ -104,7 +109,7 @@ iframe {
 <div id="intro" class="section active">
     <h1>Hey Kriti 💖</h1>
     <p>This little website is made with love by Udit 💕</p>
-    <button onclick="startSurprise()">Are you ready for a surprise? 😍</button>
+    <button id="yesBtn" onclick="startSurprise()">Are you ready for a surprise? 😍</button>
 </div>
 
 <!-- VIDEO -->
@@ -124,11 +129,10 @@ iframe {
 
 <!-- VALENTINE QUESTION -->
 <div id="valentine" class="section">
-    <h1 onclick="runFireworks()" style="cursor:pointer;">
-        💌 Will you be my Valentine, Kriti? 💌
-    </h1>
+    <h1>💌 Will you be my Valentine, Kriti? 💌</h1>
 
-    <button onclick="showFinal()">YES ❤️</button>
+    <button id="yesBtn" onclick="showFinal()">YES ❤️</button>
+    <button id="noBtn">NO 😝</button>
 </div>
 
 <!-- FINAL -->
@@ -157,6 +161,7 @@ function startSurprise() {
 function showValentine() {
     document.getElementById("videoSection").classList.remove("active");
     document.getElementById("valentine").classList.add("active");
+    positionNoButton();
     runFireworks();
 }
 
@@ -166,7 +171,7 @@ function showFinal() {
     runFireworks();
 }
 
-/* HEARTS */
+/* ❤️ HEARTS */
 function createHeart() {
     const heart = document.createElement("div");
     heart.className = "heart";
@@ -177,7 +182,7 @@ function createHeart() {
     setTimeout(() => heart.remove(), 5000);
 }
 
-/* FIREWORKS */
+/* 🎆 FIREWORKS */
 function runFireworks() {
     for (let i = 0; i < 25; i++) {
         setTimeout(createFirework, i * 120);
@@ -192,6 +197,17 @@ function createFirework() {
     document.body.appendChild(firework);
     setTimeout(() => firework.remove(), 1000);
 }
+
+/* 😜 FUNNY NO BUTTON */
+const noBtn = document.getElementById("noBtn");
+
+function positionNoButton() {
+    noBtn.style.left = Math.random() * 60 + "vw";
+    noBtn.style.top = Math.random() * 60 + "vh";
+}
+
+noBtn.addEventListener("mouseover", positionNoButton); // laptop
+noBtn.addEventListener("touchstart", positionNoButton); // phone
 </script>
 
 </body>
